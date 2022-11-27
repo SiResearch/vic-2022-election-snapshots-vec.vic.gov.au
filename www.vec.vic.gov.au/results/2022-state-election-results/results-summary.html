@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     <meta name="DCTERMS.title" content="Results summary">
-<meta name="DCTERMS.modified" scheme="DCTERMS.ISO8601" content="2022-11-26">
+<meta name="DCTERMS.modified" scheme="DCTERMS.ISO8601" content="2022-11-27">
 <meta name="DCTERMS.created" scheme="DCTERMS.ISO8601" content="2022-11-11">
 
 <meta name="dcterms.type" content="Text" />
@@ -70,7 +70,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     
-<meta name="VIcurrentDateTime" content="638051157328544353" />
+<meta name="VIcurrentDateTime" content="638051168237302002" />
 <script type="text/javascript" src="https://www.vec.vic.gov.au/layouts/system/VisitorIdentification.js"></script>
 
     
@@ -1215,11 +1215,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="cm cm-rich-text">
         <h2>Preference distribution tracker</h2>
-<p>A provisional tracker will give an early indication of how many districts may be won be an overall majority, and how many may need a preference distribution. It will be available as the count progresses.&nbsp;</p>
+<p>This tracker gives an early indication of how many districts may be won be an overall majority, and how many may need a preference distribution.</p>
 <p>This snapshot of election results is indicative only and will have no bearing on the outcome of the election.</p>
 <p>Learn more about <a href="https://youtu.be/D6X5CCnoS-A">preference distributions</a>.</p>
     </div>
 
+
+
+<div class="cm cm-raw-html">
+
+<div class="election-results-list-view l-padding indicative_chart_container">
+       
+        <div id="data_indicative_container" class="data_table">
+            <p class="indicative_majority"></p>
+            <p class="indicative_distribution"></p>
+        </div>
+        <div id="chart_indicative" class="chart_indicative desktop_chart">
+        </div>
+
+
+
+       <div id="chart_indicative_mobile" class="chart_indicative mobile_chart">
+        </div>
+       
+    </div>
+    
+    <script>
+        function getDateTime() {
+            var now = new Date();
+            var year = now.getFullYear().toString();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+
+
+
+           var dateTime = year.toString() + month.toString() + day.toString() + hour.toString() + minute.toString() + second.toString();
+
+
+
+           return dateTime;
+        }
+
+
+
+       var modelIn;
+        var url = "https://resultswebsiteprod.blob.core.windows.net/resultswebsite/count.json?" + getDateTime();
+        fetch(url)
+            .then(async (res) => {
+                modelIn = await res.json();
+                google.charts.setOnLoadCallback(drawIndiChart);
+                $(window).resize(function () {
+                    drawIndiChart();
+                });
+            });
+
+
+
+     
+    </script></div>
 
 <!-- START .sl -->
 <div class="layout-padding  has-no-vertical-padding" >
@@ -1442,7 +1498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.embedIcons(document.querySelectorAll('[data-grunticon-embed]'));
     </script>
     
-<script async type="text/javascript" src="https://www.vec.vic.gov.au/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&amp;ns=3&amp;cb=1821966480"></script>
+<script async type="text/javascript" src="https://www.vec.vic.gov.au/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&amp;ns=3&amp;cb=1379142492"></script>
 </body>
 </html>
 
